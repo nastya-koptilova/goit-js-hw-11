@@ -10,7 +10,20 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
-  padding-left: 10px;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 ul {
@@ -19,4 +32,41 @@ ul {
 
 li {
   list-style: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.search-form input {
+  height: 30px;
+  width: 300px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+button {
+  height: 30px;
+  min-width: 80px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.photo-card {
+  width: calc((100% - 90px) / 4);
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  padding: 15px;
 }

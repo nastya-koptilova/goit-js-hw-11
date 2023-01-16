@@ -1,5 +1,6 @@
 'use strict';
 
+import axios from 'axios';
 export class PixabayAPI {
   static BASE_URL = 'https://pixabay.com/api/';
   static API_KEY = '32875867-65814ebf8b23bcdf5668f7744';
@@ -7,23 +8,23 @@ export class PixabayAPI {
   constructor() {
     this.page = 1;
     this.query = null;
+    this.per_page = 40;
+    this.countHits = this.per_page;
   }
 
   async fetchPhotosByQuery() {
-    const searchParams = new URLSearchParams({
-      q: this.q,
-      page: this.page,
-      per_page: 20,
-      image_type: 'photo',
-      orientation: 'horizontal',
-      safesearch: true,
-      key: PixabayAPI.API_KEY,
-    });
+    const searchParams = {
+      params: {
+        q: this.query,
+        page: this.page,
+        per_page: this.per_page,
+        image_type: 'photo',
+        orientation: 'horizontal',
+        safesearch: true,
+        key: PixabayAPI.API_KEY,
+      },
+    };
 
-    const response = await fetch(`${PixabayAPI.BASE_URL}?${searchParams}`);
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return await response.json();
+    return await axios.get(PixabayAPI.BASE_URL, searchParams);
   }
 }

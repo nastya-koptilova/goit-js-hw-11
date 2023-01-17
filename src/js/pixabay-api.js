@@ -12,7 +12,7 @@ export class PixabayAPI {
     this.countHits = this.per_page;
   }
 
-  async fetchPhotosByQuery() {
+  fetchPhotosByQuery() {
     const searchParams = {
       params: {
         q: this.query,
@@ -25,6 +25,6 @@ export class PixabayAPI {
       },
     };
 
-    return await axios.get(PixabayAPI.BASE_URL, searchParams);
+    return axios.get(PixabayAPI.BASE_URL, searchParams);
   }
 }

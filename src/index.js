@@ -47,7 +47,6 @@ const onSearchFormELSubmit = async event => {
 
 const onLoadMoreBtnClick = async event => {
   const { target } = event;
-  target.disabled = true;
 
   pixabayAPI.page += 1;
 
@@ -63,9 +62,7 @@ const onLoadMoreBtnClick = async event => {
     pixabayAPI.countHits += data.hits.length;
     galleryEl.insertAdjacentHTML('beforeend', createGalleryCards(data.hits));
     lightbox.refresh();
-    window.scrollTo(0, 0);
     smoothScroll();
-    target.disabled = false;
   } catch (err) {
     console.log(err);
   }
@@ -107,7 +104,7 @@ const createGalleryCards = photos => {
 </div>`;
   });
 
-  return (galleryEl.innerHTML = galleryCards.join(''));
+  return galleryCards.join('');
 };
 
 const smoothScroll = () => {

@@ -36,7 +36,6 @@ const onSearchFormELSubmit = async event => {
     }
     loadMoreBtn.classList.remove('hidden');
     galleryEl.innerHTML = createGalleryCards(data.hits);
-    console.log(data);
     Notiflix.Notify.info(`Hooray! We found ${data.totalHits} images.`);
     lightbox.refresh();
     smoothScroll();
